@@ -1,15 +1,17 @@
 {
   "name": "vue-lazyload-akamai",
   "description": "Vue.js lazy load image directive with akamai image converter",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "license": "MIT",
   "author": "Blibli.com Tech Team (https://github.com/bliblidotcom)",
   "private": false,
   "scripts": {
+    "build-demo": "rm -rf dist-demo && cross-env NODE_ENV=production webpack --mode production --progress --hide-modules",
+    "build-lib": "cross-env NODE_ENV=production webpack --mode production --progress --hide-modules --config webpack.config.dist.js",
+    "publish-demo": "node ./publish-demo.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --open",
-    "build-demo": "rm -rf dist-demo && cross-env NODE_ENV=production webpack --mode production",
-    "build-lib": "node_modules/.bin/rollup -c",
-    "publish-demo": "node ./publish-demo.js"
+    "dev": "npm run start",
+    "dist": "npm run build-lib && npm run build-demo && npm run publish-demo"
   },
   "main": "dist/vue-lazyload-akamai.min.js",
   "files": [
@@ -31,7 +33,7 @@
     "akamai image converter"
   ],
   "dependencies": {
-    "akamai-image-converter": "^0.0.2"
+    "akamai-image-converter": "^0.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -46,13 +48,9 @@
     "eslint-plugin-vue": "4.5.0",
     "file-loader": "^1.1.11",
     "gh-pages": "1.1.0",
-    "html-webpack-plugin": "^3.1.0",
+    "html-webpack-plugin": "^3.2.0",
     "intersection-observer": "0.5.0",
     "jest": "^22.4.3",
-    "rollup": "0.58.2",
-    "rollup-plugin-babel": "3.0.4",
-    "rollup-plugin-uglify": "3.0.0",
-    "rollup-plugin-license": "0.6.0",
     "vue": "^2.5.16",
     "vue-jest": "^2.5.0",
     "vue-loader": "^14.2.2",

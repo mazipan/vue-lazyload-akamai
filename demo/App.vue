@@ -20,45 +20,37 @@
       <div class="modal" v-if="modalShow" @click="hideModal">
         <img
             v-lazyimg
-            class="lazy"
-            src="assets/placeholder.png"
-            :data-src="'https://picsum.photos/350/350/?image=' + indexShow"
-            data-err="assets/broken-image.jpg">
+            class="lazy 0"
+            :data-src="'https://picsum.photos/350/350/?image=' + indexShow"/>
       </div>
 
       <img
           v-lazyimg
           v-for="img in images"
           :key="'lazy1-'+ img"
-          class="lazy"
-          src="assets/placeholder.png"
+          class="lazy 1"
           :data-src="'https://picsum.photos/350/350/?image=' + img"
-          data-err="assets/broken-image.jpg">
+          data-quality="40"
+          data-width="350"
+          data-height="350"/>
 
       <img
           v-lazyimg
-          class="lazy"
-          src="assets/placeholder.png"
-          data-src="assets/logo-404.png"
-          data-err="assets/broken-image.jpg">
-
+          class="lazy 2"
+          data-src="assets/logo-404.png"/>
 
       <img
           v-lazyimg
-          class="lazy"
-          src="assets/placeholder.png"
+          class="lazy 3"
           data-src="assets/logo-404.png"
-          data-err="assets/broken-image.jpg">
-
+          data-err="assets/broken-image.jpg"/>
 
       <img
           v-lazyimg
           v-for="img in images"
           :key="'lazy2-'+ img"
-          class="lazy"
-          src="assets/placeholder.png"
-          :data-src="'https://picsum.photos/350/350/?image=' + (img+21)"
-          data-err="assets/broken-image.jpg">
+          class="lazy 4"
+          :data-src="'https://picsum.photos/350/350/?image=' + (img+21)">
 
     </main>
 
@@ -100,27 +92,27 @@ export default {
 body {
   font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji";
-  color: #282828;
+  color: #000;
   font-size: 100%;
 }
 a {
-  color: #4dba87;
+  color: #0095DA;
   text-decoration: none;
 }
 a:hover {
-  color: #4dba87;
+  color: #0095DA;
 }
 h1 {
   margin: 0;
   margin-left: 0.3em;
   font-size: 1.5rem;
-  color: #fff;
+  color: #000;;
 }
 .header,
 .footer {
   width: 100%;
-  background-color: #4dba87;
-  color: #fff;
+  background-color: #0095DA;
+  color: #000;
   display: flex;
   align-items: center;
   position: fixed;
@@ -138,15 +130,15 @@ h1 {
   bottom: 0;
 }
 .ic {
-  fill: #fff;
+  fill: #000;
   margin-right: 0.3em;
   width: 30px;
   height: 30px;
 }
 .content {
   margin: 70px 0;
+  text-align: center;
 }
-
 .lazy {
   display: block;
   margin: 1em auto;
@@ -168,13 +160,15 @@ h1 {
     display: flex;
     align-items: center;
 }
-.modal img {
-  width: 500px;
-  height: 500px;
+@media screen and (min-width: 640px) {
+  .modal img {
+    width: 500px;
+    height: 500px;
+  }
 }
 .btn{
-  background: #4dba87;
-  color: #fff;
+  background: #0095DA;
+  color: #000;
   display: inline-block;
   padding: 13px 20px;
   outline: none;

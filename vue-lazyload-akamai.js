@@ -9,10 +9,14 @@ import imageConverter from 'akamai-image-converter'
 const plugin = {
   /**
    * available options:
-   * + useWebp: boolean
+   * + useWebp: Boolean
+   * + quality: Number
+   * + height, width: Number
+   * + fallback: String
   */
   install: (Vue, options = {}) => {
     const isSupportWebp = (document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0)
+    const DEFAULT_TIMEOUT = 300
 
     const _swapImage = (targetEl, params) => {
       // data original
@@ -45,16 +49,22 @@ const plugin = {
       // when success
       newImage.onload = () => {
         if (dataSrc) {
-          targetEl.src = dataSrc
+          let timeout = params.timeout || DEFAULT_TIMEOUT
+          // swap image here
+          setTimeout(() => {
+            targetEl.src = dataSrc
+          }, timeout)
         }
       }
 
       // data fallback image
-      const dataErr = targetEl.dataset.err
+      const localFallback = targetEl.dataset.err
       // when image failed to fetched
       newImage.onerror = () => {
-        if (dataErr) {
-          targetEl.src = dataErr
+        if (localFallback) {
+          targetEl.src = localFallback
+        } else if (params.fallback) {
+          targetEl.src = params.fallback
         }
       }
     }
@@ -78,12 +88,17 @@ const plugin = {
     // create vue directive for easier use in components
     Vue.directive('lazyimg', {
       bind (el) {
+        // using global place holder if exist
+        if (options.placeholder){
+          el.src = options.placeholder
+        }
+
         // basic flow: read from data-src attribute than move to src attr
         if ('IntersectionObserver' in window) {
           _initObserver(el, options)
         } else {
           // fallback when IntersectionObserver not supported
-          _swapImage(el.target, options)
+          _swapImage(el, options)
         }
       },
       update (el) {
