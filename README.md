@@ -2,7 +2,7 @@
 
 > Vue.js lazy load image directive with akamai image converter
 
-[![License](https://img.shields.io/github/license/bliblidotcom/vue-lazyload-akamai.svg?longCache=true)](https://github.com/bliblidotcom/vue-lazyload-akamai) [![version](https://img.shields.io/npm/v/vue-lazyload-akamai.svg?maxAge=3600)](https://www.npmjs.com/package/vue-lazyload-akamai)
+[![License](https://img.shields.io/github/license/bliblidotcom/vue-lazyload-akamai.svg?longCache=true)](https://github.com/bliblidotcom/vue-lazyload-akamai) ![minified](https://badgen.net/bundlephobia/minzip/vue-lazyload-akamai) [![version](https://img.shields.io/npm/v/vue-lazyload-akamai.svg?maxAge=3600)](https://www.npmjs.com/package/vue-lazyload-akamai)
 [![downloads](https://img.shields.io/npm/dt/vue-lazyload-akamai.svg?maxAge=86400)](https://www.npmjs.com/package/vue-lazyload-akamai)
 
 ## 💅 Demo Page
